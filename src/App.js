@@ -1,25 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
+import logo from "./logo.svg";
+import "./App.css";
+import MyComponent from "./components/MyComponent";
+import { useState } from "react";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+    let text = "change component";
+    const [theme, setTheme] = useState(false);
+    const [style, setStyle] = useState("light");
 
+    const handleClick = () => {
+        setTheme(!theme);
+        if (theme) {
+          setStyle("light")
+        } else{
+          setStyle("dark")
+        } 
+    };
+
+    return (
+        <div className={style}>
+            <button onClick={handleClick}>{text}</button>
+            <MyComponent />
+        </div>
+    );
+}
 export default App;
